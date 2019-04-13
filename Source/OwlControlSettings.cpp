@@ -171,7 +171,7 @@ void OwlControlSettings::handleFirmwareVersionMessage(const char* name, int size
 #ifdef DEBUG
   std::cout << "Device Firmware: " << str << std::endl;
 #endif // DEBUG
-  AlertWindow::showMessageBoxAsync(AlertWindow::InfoIcon, "Device Firmware", "Currently installed: "+str);
+  //AlertWindow::showMessageBoxAsync(AlertWindow::InfoIcon, "Device Firmware", "Currently installed: "+str);
 }
 
 void OwlControlSettings::handleDeviceIdMessage(const char* data, int size){

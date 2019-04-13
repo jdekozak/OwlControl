@@ -1,7 +1,7 @@
 #ifndef __APPLICATIONCONFIGURATION_H__
 #define __APPLICATIONCONFIGURATION_H__
 
-#include "../JuceLibraryCode/JuceHeader.h"
+#include "../JuceHeader.h"
 
 class ApplicationConfiguration {
 public:

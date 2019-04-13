@@ -1,0 +1,33 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        owl {
+            keyAlias 'upload'
+            keyPassword 'owlcontrol'
+            storeFile file('D:/OwlControl/<store_file_name>.jks')
+            storePassword '<put_your_store_password>'
+        }
+    }
+    externalNativeBuild {
+        ndkBuild {
+            path file('src/main/jni/Android.mk')
+        }
+    }
+    compileSdkVersion = 28
+    buildToolsVersion = "28.0.3"
+    defaultConfig {
+        applicationId "com.pingdynasty.owlcontrol"
+        minSdkVersion 23
+        targetSdkVersion 27
+    }
+    buildTypes {
+        release {
+            signingConfig signingConfigs.owl
+        }
+    }
+}
+
+dependencies {
+    api 'com.android.support:support-v4:+'
+}

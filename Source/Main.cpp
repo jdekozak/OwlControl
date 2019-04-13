@@ -1,8 +1,8 @@
-#include "../JuceLibraryCode/JuceHeader.h"
+#include "../JuceHeader.h"
 #include "OwlControlSettings.h"
-#include "OwlControlGui.h"
+#include "GUI/OwlControlGui.h"
 #include "ApplicationConfiguration.h"
-#include "ApplicationSettingsWindow.h"
+#include "GUI/ApplicationSettingsWindow.h"
 #include "ApplicationCommands.h"
 
 class OwlControlApplication  : public JUCEApplication {
@@ -113,15 +113,23 @@ public:
 #if JUCE_MAC
 	MenuBarModel::setMacMainMenu(menu);
 #else
+#if ! JUCE_ANDROID
 	setMenuBar(menu);
-#endif
-
 	tabs = new TabbedComponent(TabbedButtonBar::TabsAtTop);
 	setContentOwned(tabs, false);
 	tabs->addTab("Main", Colours::lightgrey, gui, false, 1);
 	tabs->addTab("Application Settings", Colours::lightgrey, new ApplicationSettingsWindow(settings, dm), true, 2);
-	tabs->setSize(779, 700);
-	centreWithSize (779, 700);
+	tabs->setSize(640, 360);
+#endif
+#endif
+#if JUCE_ANDROID
+	dm.setDefaultMidiOutput(juce::MidiOutput::getDevices()[0]);
+	dm.setMidiInputEnabled(juce::MidiInput::getDevices()[0], true);
+	setContentOwned(gui, false);
+	gui->setSize(620,349);
+	setUsingNativeTitleBar (true);
+	setFullScreen(true);
+#endif
 	setVisible (true);
       }
       ~MainWindow(){

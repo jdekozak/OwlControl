@@ -15,7 +15,7 @@ PropertiesFile* ApplicationConfiguration::getApplicationProperties(){
     opts.filenameSuffix = ".properties";
     properties = new PropertiesFile(opts);
     if(!properties->containsKey("application-directory"))
-      properties->setValue("application-directory", File::getSpecialLocation(File::userDocumentsDirectory)
+      properties->setValue("application-directory", File::getSpecialLocation(File::userApplicationDataDirectory)
 			   .getChildFile(opts.applicationName).getFullPathName());
     if(!properties->containsKey("midi-output"))
       properties->setValue("midi-output", "OWL-MIDI");
